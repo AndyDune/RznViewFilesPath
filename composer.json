@@ -1,16 +1,16 @@
 {
-    "name": "andydune/rzn-view-component",
-    "description": "View component module for ZF2.",
+    "name": "andydune/rzn-view-files-path",
+    "description": "A ZF2 module allows you to change the paths to view files (css, js, images) easily.",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "zf2", "rzn", "php", "component"
     ],
-    "homepage": "https://github.com/AndyDune/RznViewComponent",
+    "homepage": "https://github.com/AndyDune/RznViewFilesPath",
     "authors": [
         {
             "name": "Andrey Ryzhov",
-            "email": "m@1rzn.ru",
+            "email": "info@rznw.ru",
             "homepage": "http://rznw.ru"
         }
     ],
