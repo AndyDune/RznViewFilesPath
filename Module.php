@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  *
  * @package     RznViewFilesPath
- * @author      Andrey Ryzhov <info@rznw.com>
+ * @author      Andrey Ryzhov <info@rznw.ru>
  * @copyright   2014 Andrey Ryzhov.
  * @license     http://www.opensource.org/licenses/mit-license.php  MIT License
  * @link https://github.com/AndyDune/RznViewFilesPath for the canonical source repository
