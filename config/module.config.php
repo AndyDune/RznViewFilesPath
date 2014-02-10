@@ -9,7 +9,8 @@ return array(
     'rzn_view_files_path' => array(
         'view_files_theme'     => 'default',
         'view_files_base_path' => '/view/',
-        'view_files_domain'    => null
+        'view_files_domain'    => null,
+        'view_files_theme_service' => null
     ),
 
     'view_helpers' => array (

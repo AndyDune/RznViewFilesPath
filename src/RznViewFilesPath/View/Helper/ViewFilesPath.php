@@ -34,6 +34,7 @@ use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Exception;
 
+
 class ViewFilesPath extends AbstractHelper implements ServiceLocatorAwareInterface
 {
 
@@ -80,7 +81,8 @@ class ViewFilesPath extends AbstractHelper implements ServiceLocatorAwareInterfa
     protected function getPath()
     {
         if (!$this->path) {
-            $config = $this->getServiceLocator()->getServiceLocator()->get('config');
+            $services = $this->getServiceLocator()->getServiceLocator();
+            $config = $services->get('config');
 
             if (isset($config['rzn_view_files_path']['view_files_base_path'])) {
                 $this->path = '/' . trim($config['rzn_view_files_path']['view_files_base_path'], '/');
@@ -93,7 +95,25 @@ class ViewFilesPath extends AbstractHelper implements ServiceLocatorAwareInterfa
                 $this->path =  $config['rzn_view_files_path']['view_files_domain'] . $this->path;
             }
 
-            if (isset($config['rzn_view_files_path']['view_files_theme'])) {
+            $theme = false;
+            if (isset($config['rzn_view_files_path']['view_files_theme_service'])) {
+                if (is_array($config['rzn_view_files_path']['view_files_theme_service']))
+                {
+                    foreach($config['rzn_view_files_path']['view_files_theme_service'] as $themeServiceName) {
+                        $theme = $services->get($themeServiceName)->getViewFilesTheme();
+                        if ($theme)
+                            break;
+                    }
+                }
+                else {
+                    $theme = $services->get($config['rzn_view_files_path']['view_files_theme_service'])->getViewFilesTheme();
+                }
+            }
+
+            if ($theme) {
+                $this->path .= '/' . $theme;
+            }
+            else if (isset($config['rzn_view_files_path']['view_files_theme'])) {
                 $this->path .= '/' . $config['rzn_view_files_path']['view_files_theme'];
             }
             else {
